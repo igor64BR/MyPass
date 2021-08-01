@@ -57,7 +57,14 @@ indicator_login = tk.Label(text='Email/Username:', fg=LIGHT_COLOR2, bg=RED, font
 indicator_login.grid(column=1, row=3)
 
 input_login = tk.Entry(width=47)
-input_login.insert(END, string='igor64br@gmail.com')
+
+'''
+    You can change the email below to your main email or add a "#" to the beginning of the line to comment it and the
+    program will automatically ignore the command line.
+'''
+input_login.insert(END, string='example@gmail.com')
+
+
 input_login.grid(column=2, row=3, columnspan=2)
 
 indicator_password = tk.Label(text='Password:', fg=LIGHT_COLOR2, bg=RED, font=('Comic Sans', 15))
