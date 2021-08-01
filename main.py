@@ -1,6 +1,7 @@
 import tkinter as tk
-from tkinter import END
+from tkinter import END, messagebox
 from pass_gen import generate
+
 # ---------------------------- COLORS ------------------------------------------#
 RED = '#8D2828'
 LIGHT_COLOR1 = '#ECEFA4'
@@ -9,30 +10,38 @@ LIGHT_COLOR2 = '#D9DD6B'
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def password_fill():
+    new_password = generate()
+
     input_password.delete(first=0, last=END)
-    input_password.insert(END, string=generate())
+    input_password.insert(END, string=new_password)
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
-    if input_web.get() == '' or input_login.get() == '' or input_password.get() == '':
-        warning_label.config(text='The form is uncompleted. \nPlease fill all the camps and try again.')
+    website = input_web.get()
+    login = input_login.get()
+    password = input_password.get()
+
+    if website == '' or login == '' or password == '':
+        messagebox.showinfo(title='Uncompleted Form', message='The form is uncompleted. \nPlease fill all the camps and'
+                                                              ' try again.')
     else:
-        website = input_web.get()
-        login = input_login.get()
-        password = input_password.get()
-        warning_label.config(text='')
-
-        """
-        If you want to change the data file name, substitute the 'data.txt' by the name you want. Also remember to 
-        change the 'data.txt' file manually in the application files, or else you will create one new data file.
-        """
-
-        with open(file='data.txt', mode='a') as data_file:
-            data_file.write(f'{website} | {login} | {password}\n')
-            warning_label.config(text='Data saved successfully!')
-            input_web.delete(first=0, last=END)
-            input_password.delete(first=0, last=END)
+        user_confirm = messagebox.askyesno(title=input_web, message=f'Is your data correct? \nLocation: {website} \nLogin: {login} '
+                                                                    f'\nPasscode: {password}')
+        if user_confirm:
+            website = input_web.get()
+            login = input_login.get()
+            password = input_password.get()
+            warning_label.config(text='')
+            """
+            If you want to change the data file name, substitute the 'data.txt' by the name you want. Also remember to 
+            change the 'data.txt' file manually in the application files, or else you will create one new data file.
+            """
+            with open(file='data.txt', mode='a') as data_file:
+                data_file.write(f'{website} | {login} | {password}\n')
+                warning_label.config(text='Data saved successfully!')
+                input_web.delete(first=0, last=END)
+                input_password.delete(first=0, last=END)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
