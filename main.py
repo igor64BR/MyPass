@@ -5,7 +5,7 @@ from pass_gen import generate
 import json
 
 # ---------------------------- VARIABLES ------------------------------------------#
-data_file_location = '/home/baiocco/a100DoC_projects/day-29-MyPass/data.json'
+data_file_location = './data.json'
 default_login = '@gmail.com'
 RED = '#8D2828'
 LIGHT_COLOR1 = '#ECEFA4'
