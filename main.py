@@ -1,4 +1,3 @@
-import json
 import tkinter as tk
 from tkinter import END, messagebox
 from pass_gen import generate
@@ -36,7 +35,8 @@ def save():
         messagebox.showinfo(title='Uncompleted Form', message='The form is uncompleted. \nPlease fill all the camps and'
                                                               ' try again.')
     else:
-        user_confirm = messagebox.askyesno(title=input_web, message=f'Is your data correct? \nLocation: {website} \nLogin: {login} '
+        user_confirm = messagebox.askyesno(title=input_web, message=f'Is your data correct? \nLocation: {website} '
+                                                                    f'\nLogin: {login} '
                                                                     f'\nPasscode: {password}')
         if user_confirm:
             warning_label.config(text='')
@@ -71,7 +71,8 @@ def search():
             password = data[website]['password']
             messagebox.showinfo(title=website.title(), message=f'Login: {login} \nPassword: {password}')
         except KeyError:
-            messagebox.showinfo(title=website.title(), message='Oops! Apparently there is no website registered with that name')
+            messagebox.showinfo(title=website.title(), message='Oops! Apparently there is no website registered with '
+                                                               'that name')
     except json.decoder.JSONDecodeError:
         messagebox.showinfo(title='Oh No!', message='There aren\'t any passwords saved yet. Why don\'t you start '
                                                     'saving now?')
