@@ -4,7 +4,7 @@ from pass_gen import generate
 import json
 
 # ---------------------------- VARIABLES ------------------------------------------#
-data_file_location = 'data.json'
+data_file_location = './data.json'
 default_login = '@gmail.com'
 RED = '#8D2828'
 LIGHT_COLOR1 = '#ECEFA4'
@@ -35,7 +35,7 @@ def save():
         messagebox.showinfo(title='Uncompleted Form', message='The form is uncompleted. \nPlease fill all the camps and'
                                                               ' try again.')
     else:
-        user_confirm = messagebox.askyesno(title=website.title(), message=f'Is your data correct? \nLocation: {website} '
+        user_confirm = messagebox.askyesno(title=input_web, message=f'Is your data correct? \nLocation: {website} '
                                                                     f'\nLogin: {login} '
                                                                     f'\nPasscode: {password}')
         if user_confirm:
@@ -83,7 +83,7 @@ main_screen = tk.Tk()
 main_screen.config(padx=35, pady=40, bg=RED)
 main_screen.title('Password Manager')
 
-logo = tk.PhotoImage(file='logo.png')
+logo = tk.PhotoImage(file='/home/baiocco/a100DoC/day-29-MyPass/logo.png')
 
 canvas = tk.Canvas(width=200, height=200, bg=RED, highlightthickness=0)
 canvas.create_image(100, 100, image=logo)
